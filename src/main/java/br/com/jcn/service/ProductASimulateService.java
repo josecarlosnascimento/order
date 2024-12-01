@@ -25,13 +25,13 @@ public class ProductASimulateService {
     public String send() throws JsonProcessingException {
         Random random = new Random();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 30; i++) {
             OrderRequest orderRequest = new OrderRequest();
 
             orderRequest.setCustomerId((long) (random.nextInt(30) + 1));
 
             Set<OrderItensRequest> orderItensSet = new HashSet<>();
-            int numItens = random.nextInt(3) + 1;  // Quantidade de itens entre 1 e 3
+            int numItens = random.nextInt(30) + 1;
             for (int j = 0; j < numItens; j++) {
                 OrderItensRequest orderItem = new OrderItensRequest();
                 orderItem.setProductId((long) (random.nextInt(45) + 1));

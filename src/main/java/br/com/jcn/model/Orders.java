@@ -24,10 +24,10 @@ public class Orders implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne
+	@ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
-	private Customer custumer;
-	
+	private Customer customer;
+
 	@OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
 	private Set<OrderItens> orderItens;
 
@@ -44,12 +44,12 @@ public class Orders implements Serializable {
 	public boolean equals(Object o) {
 		if (o == null || getClass() != o.getClass()) return false;
 		Orders orders = (Orders) o;
-		return Objects.equals(custumer.getId(), orders.custumer.getId())
+		return Objects.equals(customer.getId(), orders.customer.getId())
 				&& Objects.equals(orderItens, orders.orderItens) && Objects.equals(orderDate, orders.orderDate);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(custumer.getId(), orderItens, orderDate);
+		return Objects.hash(customer.getId(), orderItens, orderDate);
 	}
 }

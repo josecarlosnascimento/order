@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,13 +27,14 @@ public class OrderItens implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "produto_id")
 	private Product product;
     
 	private Integer amount;
 	private BigDecimal total;
 
+	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name = "order_id")
 	private Orders orders;
