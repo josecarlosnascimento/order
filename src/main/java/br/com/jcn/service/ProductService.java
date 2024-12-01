@@ -14,7 +14,7 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 	
-    @Cacheable(value = "products", key = "#productId")
+    @Cacheable(value = "products", key = "#id")
 	public Product findById(Long id) {
 		return productRepository.findById(id).orElseThrow(() -> new RuntimeException(String.format("O produto com o id % nao existe", id)));
 	}
