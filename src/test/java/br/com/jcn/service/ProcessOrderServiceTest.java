@@ -52,7 +52,6 @@ class ProcessOrderServiceTest {
 
 		Set<OrderItensRequest> orderItens = Set.of(firstItem);
 
-
 		orderRequest.setCustomerId(1L);
 		orderRequest.setOrderItens(orderItens);
 

@@ -36,7 +36,7 @@ public class ProcessOrderService {
 	@Autowired
 	private OrderDispatcher orderDispatcher;
 	
-	public Orders processOrder(OrderRequest orderRequest) throws JsonProcessingException {
+	public void processOrder(OrderRequest orderRequest) throws JsonProcessingException {
 		
 		Orders orders = new Orders();
 		Set<OrderItens> itens = new HashSet<>();
@@ -67,9 +67,8 @@ public class ProcessOrderService {
 			orderRepository.save(orders);
 			orderDispatcher.send(orders);
 		}else{
-			log.warn("PEDIDO DUPLICADO... EFETUAR TRATATIBA");
+			log.warn("PEDIDO DUPLICADO... EFETUAR TRATATIVA");
 		}
-		return orders;
 	}
 
 	private boolean isOrderDuplicated(Long customerId, Set<OrderItens> itens){

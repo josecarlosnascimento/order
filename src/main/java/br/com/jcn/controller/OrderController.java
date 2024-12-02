@@ -13,8 +13,8 @@ import br.com.jcn.model.Orders;
 import br.com.jcn.repository.OrderRepository;
 
 @RestController
-@RequestMapping("pedido")
-public class PedidoController {
+@RequestMapping("order")
+public class OrderController {
 	
 	@Autowired
 	private OrderRepository orderRepository;
@@ -26,7 +26,7 @@ public class PedidoController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Orders> findById(@PathVariable("id") Long id){
-		return ResponseEntity.ok(orderRepository.findById(id).get());
+		return ResponseEntity.ok(orderRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException(String.format("O pedido com o id %d nao existe", id))));
 	}
-
 }
