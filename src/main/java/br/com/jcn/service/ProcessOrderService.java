@@ -34,13 +34,12 @@ public class ProcessOrderService {
 	@Autowired
 	private OrderDispatcher orderDispatcher;
 	
-	public void processOrder(OrderRequest orderRequest) throws JsonProcessingException {
+	public Orders processOrder(OrderRequest orderRequest) throws JsonProcessingException {
 		
 		Orders orders = new Orders();
 		Set<OrderItens> itens = new HashSet<>();
 		
-		var customer = this.customerRepository.findById(orderRequest.getCustomerId())
-				.orElseThrow(() -> new RuntimeException(String.format("O cliente com o id % nao existe", orderRequest.getCustomerId())));
+		var customer = this.customerRepository.findByIdOrElseThrow(orderRequest.getCustomerId());
 
 		orderRequest.getOrderItens().forEach(orderItem -> {
 			
@@ -67,6 +66,7 @@ public class ProcessOrderService {
 		}else{
 			log.warn("PEDIDO DUPLICADO... EFETUAR TRATATIVA");
 		}
+		return orders;
 	}
 
 	private boolean isOrderDuplicated(Long customerId, Set<OrderItens> itens){
