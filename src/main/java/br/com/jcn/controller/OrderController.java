@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.jcn.model.Orders;
-import br.com.jcn.repository.OrderRepository;
 
 @RestController
 @RequestMapping("order")

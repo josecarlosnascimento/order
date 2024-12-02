@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.jcn.model.Product;
 
-import java.util.Optional;
-
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     default Product findByIdOrElseThrow(Long id){

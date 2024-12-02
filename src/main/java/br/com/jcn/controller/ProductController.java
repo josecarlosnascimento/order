@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.jcn.controller.response.ProductResponse;
-import br.com.jcn.repository.ProductRepository;
 import br.com.jcn.service.ProductService;
 
 @RestController

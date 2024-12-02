@@ -1,8 +1,6 @@
 package br.com.jcn.service;
 
 import br.com.jcn.kafka.OrderDispatcher;
-import br.com.jcn.model.OrderItens;
-import br.com.jcn.model.Orders;
 import br.com.jcn.repository.CustomerRepository;
 import br.com.jcn.repository.OrderRepository;
 import br.com.jcn.request.OrderItensRequest;
@@ -14,13 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 

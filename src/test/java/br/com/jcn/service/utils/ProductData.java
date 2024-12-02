@@ -1,6 +1,5 @@
 package br.com.jcn.service.utils;
 
-import br.com.jcn.model.Customer;
 import br.com.jcn.model.Product;
 
 import java.math.BigDecimal;

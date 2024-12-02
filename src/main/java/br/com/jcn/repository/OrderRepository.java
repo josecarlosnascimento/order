@@ -1,7 +1,6 @@
 package br.com.jcn.repository;
 
 import br.com.jcn.controller.exception.NotFoundException;
-import br.com.jcn.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.jcn.model.Orders;
