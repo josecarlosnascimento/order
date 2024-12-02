@@ -18,14 +18,11 @@ import br.com.jcn.service.ProductService;
 public class ProductController {
 
 	@Autowired
-	private ProductRepository productRepository;
-
-	@Autowired
 	private ProductService productService;
 	
 	@GetMapping
 	public ResponseEntity<List<ProductResponse>> findAll(){
-		return ResponseEntity.ok(productRepository.findAll().stream().map(p -> new ProductResponse(p.getId(), p.getName(), p.getUnitPrice())).toList());
+		return ResponseEntity.ok(productService.findAll());
 	}
 	
 	@GetMapping("/{id}")

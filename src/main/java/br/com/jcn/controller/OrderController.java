@@ -2,6 +2,8 @@ package br.com.jcn.controller;
 
 import java.util.List;
 
+import br.com.jcn.controller.response.OrderResponse;
+import br.com.jcn.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,16 +19,15 @@ import br.com.jcn.repository.OrderRepository;
 public class OrderController {
 	
 	@Autowired
-	private OrderRepository orderRepository;
+	private OrderService orderService;
 	
 	@GetMapping
 	public ResponseEntity<List<Orders>> findAll(){
-		return ResponseEntity.ok(orderRepository.findAll());
+		return ResponseEntity.ok(orderService.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Orders> findById(@PathVariable("id") Long id){
-		return ResponseEntity.ok(orderRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException(String.format("O pedido com o id %d nao existe", id))));
+	public ResponseEntity<OrderResponse> findById(@PathVariable("id") Long id){
+		return ResponseEntity.ok(orderService.findById(id));
 	}
 }
